@@ -7,6 +7,7 @@ import {
   ScrollView,
   StyleSheet,
   Dimensions,
+  FlatList,
   SafeAreaView,
   NativeModules,
   useColorScheme,
@@ -31,19 +32,19 @@ const App = () => {
   const [connectedDevices, setConnectedDevices] = useState([]);
 
   const handleGetConnectedDevices = () => {
-    BleManager.getConnectedPeripherals([]).then(results => {
+    BleManager.getBondedPeripherals([]).then(results => {
       if(results.length === 0) {
         console.log('No connected bluetooth devices');
       } else {
         for(let i = 0; i < results.length; i++) {
-         ; let peripheral = results[i];
+          let peripheral = results[i];
           peripheral.connected = true;
           peripherals.set(peripheral.id, peripheral);
           setConnectedDevices(Array.from(peripherals.values()));
         }
       }
     });
-  };
+  }
 
   useEffect(() => {
     //turn on bluetooth if it is not on
@@ -104,6 +105,21 @@ const App = () => {
     }
   }
 
+  //pair with device first before connecting to it
+  const connectToPeripheral = peripheral => {
+    BleManager.createBond(pripheral.id)
+    .then(() => {
+      peripheral.connected = true;
+      peripherals.set(peripheral.id, peripheral);
+      setConnectedDevices(Array.from(peripherals.values()));
+      setDiscoveredDevices(Array.from(peripherals.values()));
+      console.log('Ble Device paired successfully');
+    })
+    .catch(() => {
+      console.log('failed to bond');
+    });
+  }
+
 
 
   const isDarkMode = useColorScheme() === 'dark';
@@ -120,6 +136,8 @@ const App = () => {
               flexDirection: 'row',
               justifyContent: 'space-between',
               marginBottom: 10,
+              marginTop: 40,
+              // backgroundColor: 'white'
           }}>
             <View style={styles.deviceItem}>
               <Text style={styles.deviceName}>{name}</Text>
@@ -172,8 +190,9 @@ const App = () => {
           <View>
             <Text
               style={{
-                fontSize: 30,
+                fontSize: 28,
                 textAlign: 'center',
+                marginVertical: 20,
                 color: isDarkMode ? Colors.white : Colors.black,
               }}
             >
@@ -199,7 +218,12 @@ const App = () => {
         ) :(
           <Text style={styles.noDevicesText}>No connected devices</Text>
         )}
+        
+        
       </ScrollView>
+      
+      
+      
     </SafeAreaView>
   );
 };

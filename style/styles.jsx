@@ -30,4 +30,33 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     fontStyle: 'italic',
   },
+
+  deviceItem: {
+    marginBottom: 10,
+  },
+  deviceName: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginLeft: 20,
+  },
+  deviceInfo: {
+    fontSize: 14,
+    marginLeft: 20,
+  },
+
+  deviceButton: {
+    backgroundColor: '#2196F3',
+    padding: 5,
+    borderRadius: 5,
+    marginBottom: 20,
+    marginRight: 10,
+    paddingHorizontal: 18,
+  },
+  
+
+  scanButtonText: {
+    color: 'white',
+    textAlign: 'center',
+  },
+  
 });
