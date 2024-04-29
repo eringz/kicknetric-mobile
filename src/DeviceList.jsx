@@ -1,16 +1,17 @@
 import {View, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
-import {styles} from '../style/styles';
+import {styles} from './styles';
 
- const DeviceList = ({peripheral, connect, disconnect}) => {
-  const {name, rssi, connected} = peripheral;
+export const DeviceList = ({peripheral, connect, disconnect}) => {
+  const {id, name, rssi, connected} = peripheral;
+  console.log(peripheral);
   return (
     <>
       {name && (
         <View style={styles.deviceContainer}>
           <View style={styles.deviceItem}>
             <Text style={styles.deviceName}>{name}</Text>
-            <Text style={styles.deviceInfo}>RSSI: {rssi}</Text>
+            <Text style={styles.deviceInfo}>{id}</Text>
           </View>
           <TouchableOpacity
             onPress={() =>
@@ -30,3 +31,4 @@ import {styles} from '../style/styles';
     </>
   );
 };
+

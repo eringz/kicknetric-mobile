@@ -7,10 +7,21 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     height: windowHeight,
   },
+  title: {
+    fontSize: 22,
+    textAlign: 'center',
+    marginBottom: 20,
+    marginTop: 40,
+  },
+  subtitle: {
+    fontSize: 24,
+    marginBottom: 10,
+    marginTop: 20,
+  },
   buttonStyle: {
     backgroundColor: '#307ecc',
     borderWidth: 0,
-    color: "#FFFFFF",
+    color: '#FFFFFF',
     borderColor: '#307ecc',
     height: 40,
     alignItems: 'center',
@@ -24,39 +35,43 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     fontSize: 16,
   },
-  
-  noDevicesText: {
-    textAlign: 'center',
-    marginTop: 10,
-    fontStyle: 'italic',
-  },
-
-  deviceItem: {
-    marginBottom: 10,
-  },
-  deviceName: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    marginLeft: 20,
-  },
-  deviceInfo: {
-    fontSize: 14,
-    marginLeft: 20,
-  },
-
-  deviceButton: {
+  scanButton: {
     backgroundColor: '#2196F3',
-    padding: 5,
+    padding: 10,
     borderRadius: 5,
     marginBottom: 20,
-    marginRight: 10,
-    paddingHorizontal: 18,
   },
-  
-
   scanButtonText: {
     color: 'white',
     textAlign: 'center',
   },
-  
+  noDevicesText: {
+    // textAlign: 'center',
+    marginTop: 10,
+    fontStyle: 'italic',
+  },
+
+  deviceContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+    
+  },
+  deviceItem: {
+    marginBottom: 10,
+  },
+  deviceName: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  deviceInfo: {
+    fontSize: 14,
+  },
+  deviceButton: {
+    backgroundColor: '#2196F3',
+    padding: 8,
+    borderRadius: 5,
+    marginBottom: 20,
+    width: 100,
+  },
 });
