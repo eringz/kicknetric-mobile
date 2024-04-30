@@ -9,6 +9,7 @@ import {
   NativeModules,
   useColorScheme,
   TouchableOpacity,
+  ActivityIndicator,
   NativeEventEmitter,
   PermissionsAndroid,
 } from 'react-native';
@@ -205,7 +206,8 @@ const App = () => {
             { color: isDarkMode ? Colors.white : Colors.black },
           ]}
         >
-          Available Devices:
+
+          Available Devices: { isScanning ?  <ActivityIndicator size="small" color="#0000ff" /> : ''}
         </Text>
         {discoveredDevices.length > 0 ? (
           <FlatList 
